@@ -1,5 +1,5 @@
 # Sequential-Search-Model-R-Conversion
-A conversion of the MATLAB code for the GHK estimation of the homogenous Weitzmann Sequential Search Model from Ursu, Seiler, Honka (2024). The resulting code is in R, following an analogous structure and function.
+A conversion of the MATLAB code for the GHK estimation of the homogenous Weitzmann Sequential Search Model from Ursu, Seiler, Honka (2024). The resulting code is in R, following an analogous structure and function, so the overall project architecture (and variable naming) was not of my design.
 
 While the MATLAB code replicates the estimation script for all 50 Monte Carlo seeds, R lacks a filename self-reference feature like mfilename, and so the code has been re-engineered such that the _same_ estimation script is ran 50 times, but with the seed passed as an argument. This achieves an identical result.
 
