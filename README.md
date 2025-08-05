@@ -22,6 +22,7 @@ Sequential-Search-Model-R-Conversion
     ├── fminsearchcon.R # optimiser script (LLM copy of third-party MATLAB)
     ├── liklWeitz_ghk_1 # first part of likelihood function (prepares data and handles output)
     ├── liklWeitz_ghk_2 # second part of likelihood function (calculates likelihood values based on GHK specification)
+    ├── tableZ.csv # lookup table of m vs search cost c
     └── simWeitz.R # generates simulation data for 50 seeds
 ```
 ---
