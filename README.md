@@ -9,7 +9,7 @@ Please note: much code is written by hand, other parts are LLM-assisted (especia
 
 ---
 
-## Structure
+## Structure Tree
 
 ```
 Sequential-Search-Model-R-Conversion
