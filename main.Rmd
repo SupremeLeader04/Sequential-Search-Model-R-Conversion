@@ -1,0 +1,19 @@
+This R code represents the conversion of the MATLAB code of the GHK estimation of the homogenous sequential search model used in Ursu Seiler Honka 2024.
+
+The below file is the R equivalent of the main.m code:
+
+```{r STEP 1}
+# Due to R lacking the mfilename facility MATLAB has, or an equivalent way to represent the current filename, we re-engineer the code such that the estimation script is called as a function, with D and seed set in the main.R script and passed as args. We make use of a for loop to run for each seed value, analogous to running <seed> different estimation scripts.
+
+source("estWeitz_ghk_D100.R")
+
+for (i in 1:50) {
+  estimate(D=100, seed=i)
+}
+```
+
+```{r STEP 2}
+# "run code "average.m" to average the results obtained from the estimation above"
+
+source("average.R")
+```
