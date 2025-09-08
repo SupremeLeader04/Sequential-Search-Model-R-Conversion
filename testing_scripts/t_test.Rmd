@@ -1,0 +1,44 @@
+---
+title: "T-test for Estimate Equivalence"
+author: "Me"
+date: "2025-08-05"
+output: html_document
+---
+
+```{r Loading Results from R and MATLAB}
+
+# R Results:
+results_r = read.csv("overall_results.csv", header=FALSE)
+print(results_r)
+
+# MATLAB Results:
+results_mat = read.csv("../Matlab code for sequential search model (1)/seq_code_new/homogeneous_parameters/ghk/result_ghk_mean_Sum.csv", header=FALSE)
+print(results_mat)
+
+```
+
+```{r Running T-tests}
+
+params_r = results_r[1:5, 1]  
+se_r = results_r[6:10, 1]     
+
+params_mat = results_mat[1:5, 1] 
+se_mat = results_mat[6:10, 1]   
+
+df = 98
+
+for(i in 1:5) {
+    diff = (params_r[i] - params_mat[i])
+    sd_r = se_r[i] * sqrt(50)
+    sd_mat = se_mat[i] * sqrt(50)
+    
+    se_pool = sqrt((sd_r^2/50) + (sd_mat^2/50))
+    
+    t = diff / se_pool
+    
+    p_value = 2 * pt(abs(t), df, lower.tail = FALSE)
+    
+    print(p_value)
+  }
+
+```

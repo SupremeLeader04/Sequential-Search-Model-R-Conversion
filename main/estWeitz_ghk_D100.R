@@ -11,7 +11,7 @@ estimate = function(D, seed) {
    
   ################################################################################
   
-  optim_options = list(maxit = 6000000, reltol = 1e-6, abstol = 1e-6, fnscale = 1)
+  optim_options = list(maxit = 6000000, reltol = 1e-12, abstol = 1e-12, fnscale = 1)
   
   ################################################################################
   
@@ -50,7 +50,7 @@ estimate = function(D, seed) {
   ################################################################################
   
   # initial parameter vector
-  param0  = rep(0, length(param))
+  param0  = rep(0, 5)
   
   # do estimation
   source("liklWeitz_ghk_1.R")

@@ -1,4 +1,4 @@
-d = list.files(pattern = "^rezSimWeitz_ghk_D100S.*\\.csv$")
+d = list.files(pattern = "^rezSimWeitz_ghk_D100.*\\.csv$")
 num_files = length(d)
 data_matrix = matrix(0, nrow = 12, ncol = num_files)
 
@@ -13,7 +13,6 @@ M2 = numeric(10)
 
 for (i in 1:10) {
   M[i] = mean(data_matrix[i, ])
-  print(data_matrix[i,])
   M2[i] = sd(data_matrix[i, ])
 }
 

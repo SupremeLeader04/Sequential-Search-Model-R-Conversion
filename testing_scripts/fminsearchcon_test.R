@@ -1,3 +1,16 @@
+seed = 1
+data = read.csv(sprintf("genWeitzDataS%d.csv", seed), header = FALSE)
+D = 100
+param0  = c(3, 3)
+source("liklweitz_ghk_1.R")
+f = function(x) (1-x[1])^2 + 100*(x[2]-x[1]^2)^2
+A = c()
+b = c()
+lb = rep(-4, 2)
+ub = rep(4, 2)
+nonlcon = c()
+optim_options = list(maxit = 999999, reltol = 1e-12, abstol = 1e-12, fnscale = 1)
+
 fminsearchcon <- function(fun, x0, LB = NULL, UB = NULL, A = NULL, b = NULL, 
                           nonlcon = NULL, options = NULL, ...) {
   # FMINSEARCHCON: Extension of Nelder-Mead with general inequality constraints
@@ -145,10 +158,10 @@ fminsearchcon <- function(fun, x0, LB = NULL, UB = NULL, A = NULL, b = NULL,
     )
   }
   
-  
   # Check if all variables were fixed
   if (length(x0u) == 0) {
     x <- xtransform(x0u, params)
+    
     x <- if (is.null(dim(xsize))) x else array(x, dim = xsize)
     fval <- do.call(params$fun, c(list(x), params$args))
     
@@ -197,6 +210,7 @@ fminsearchcon <- function(fun, x0, LB = NULL, UB = NULL, A = NULL, b = NULL,
     maxit = ifelse(is.null(options$maxit), 1000, options$maxit),
     trace = ifelse(is.null(options$trace), 0, options$trace)
   )
+  
   
   # Call optim with Nelder-Mead
   result <- optim(
@@ -266,6 +280,16 @@ xtransform <- function(x, params) {
            }
     )
   }
-  
   return(xtrans)
 }
+
+result = fminsearchcon(f, param0, lb, ub, A, b, nonlcon,
+                       optim_options)
+
+be = result$x 
+val = result$fval
+exitflag = result$exitflag 
+output = result$output
+
+print(be)
+print(val)

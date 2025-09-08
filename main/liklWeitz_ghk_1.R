@@ -34,7 +34,7 @@ liklWeitz_ghk_1 = function(param, data, D, seed) {
     loglik = 1e+300
   } else {
     loglik = llk
-    print(param)
+    # print(param)
     paramLL = c(param, loglik)
     # Save preliminary output
     write.csv(t(paramLL), sprintf("betaWeitz_ghk_D%dS%d.csv", D, seed), row.names = FALSE)
