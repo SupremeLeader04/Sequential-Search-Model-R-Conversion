@@ -154,8 +154,10 @@ liklWeitz_ghk_2 = function(param, dat, D, nalt, seed) {
       
       # Choice rule
       l_choice = rep(1, D)
-      for(h in 2:(H-1)) {
-        l_choice = l_choice * pnorm(xb_con_prod[H, con] + mu_i[H, ] + mc[H, con] - xb_con_prod[h, con] - mu_i[h, ])
+      if (H >= 3) {
+        for(h in 2:(H-1)) {
+          l_choice = l_choice * pnorm(xb_con_prod[H, con] + mu_i[H, ] + mc[H, con] - xb_con_prod[h, con] - mu_i[h, ])
+        }
       }
       
       # Case 3 (Appendix A): consumer searched products and purchased a product neither not searched last nor outside option
