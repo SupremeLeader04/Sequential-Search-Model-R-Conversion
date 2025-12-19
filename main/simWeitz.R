@@ -20,7 +20,7 @@ simWeitz = function(N_cons, N_prod, param,  seed) {
   index_last = cumsum(N_prod_cons)
   # Parameters
   c = exp(param[length(param)]) * rep(1, N_obs)  # Search cost
-  xb = rowSums(X * param[1:(length(param)-1)])  # Utility from observables
+  xb = as.vector(X %*% param[1:(length(param)-1)])  # Utility from observables
   # Draws affecting utility
   epsilon = rnorm(N_obs)
   eta = rnorm(N_obs)
